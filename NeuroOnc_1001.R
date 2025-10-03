@@ -163,24 +163,9 @@ neuroonc_initialize <- function(
     "AVIL","VCP","ITGAM","SLC4A1"
   ))
 }
-
 neuroonc_initialize()
 
-# Quick-launch helpers ------------------------------------------------------
-neuroonc_setup <- function(save = SAVE) {
-  run_sections(ids = "0", save = save)
-  invisible(NULL)
-}
-
-neuroonc_quickstart <- function(sections = NULL, save = SAVE, rerun_section0 = TRUE) {
-  ids <- if (is.null(sections)) names(section_registry) else as.character(sections)
-  ids <- unique(ids)
-  if (isTRUE(rerun_section0) && !"0" %in% ids) ids <- c("0", ids)
-  ids <- unique(ids)
-  run_sections(ids = ids, save = save)
-  invisible(NULL)
-}
-
+                
 # I/O and data load
 run_section0 <- function(save = SAVE) {
   old_save <- SAVE
@@ -4857,4 +4842,5 @@ section_registry <- list(
   `10` = run_section10,
   `11` = run_section11
 )
+
 
